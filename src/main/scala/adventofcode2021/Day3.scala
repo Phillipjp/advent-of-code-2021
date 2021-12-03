@@ -5,10 +5,10 @@ import scala.annotation.tailrec
 object Day3 extends App{
 
   def calculateGammaRate(binary: List[String]): String = {
-    Stream.continually(binary).take(binary.head.length)
-      .toList
-      .zipWithIndex
-      .map{case (list, index) => mostPopularBitAtIndex(list, index)}
+    binary.foldLeft(Stream.continually(0).take(binary.head.length)){ (z, bits) =>
+      z.zip(bits).map{case (t, bit) => t + bit.toString.toInt}
+    }
+      .map(i =>  if(i >= binary.length.toDouble/2) '1' else '0')
       .mkString
   }
 
