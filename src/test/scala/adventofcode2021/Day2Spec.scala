@@ -17,7 +17,7 @@ class Day2Spec extends AnyWordSpec with Matchers {
         ("forward", 2)
       )
       //When
-      val actual = Day2.partOne(instructions)
+      val actual = Day2.followInstructions(instructions, (0,0), Day2.completePartOneInstruction)
       //Then
       actual shouldBe (15,10)
     }
@@ -34,7 +34,7 @@ class Day2Spec extends AnyWordSpec with Matchers {
         ("forward", 2)
       )
       //When
-      val actual = Day2.partTwo(instructions)
+      val actual = Day2.followInstructions(instructions, (0,0,0), Day2.completePartTwoInstruction)
       //Then
       actual shouldBe (15,60,10)
     }
