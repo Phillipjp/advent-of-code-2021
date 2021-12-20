@@ -30,55 +30,44 @@ object Day5 extends App {
       lines match {
         case Nil => vents
         case line :: tail =>
-//          val a = Seq(line.start.x, line.end.x).max - Seq(line.start.x, line.end.x).min
-//          val b = Seq(line.start.y, line.end.y).max - Seq(line.start.y, line.end.y).min
-//          val length = Math.sqrt((a * a) + (b * b)) + 1
 
           val length = Seq(
             Seq(line.start.x, line.end.x).max - Seq(line.start.x, line.end.x).min,
             Seq(line.start.y, line.end.y).max - Seq(line.start.y, line.end.y).min
           ).max + 1
 
-          println(line)
-          println(s"length: $length")
-
           if (line.start.x == line.end.x && line.start.y < line.end.y) {
-            val lineMap = makeLineMap(line.start, 0, 1, length.toInt)
+            val lineMap = makeLineMap(line.start, 0, 1, length)
             mapOut(tail, vents |+| lineMap)
           }
           else if (line.start.x == line.end.x && line.start.y > line.end.y) {
-            val lineMap = makeLineMap(line.start, 0, -1, length.toInt)
+            val lineMap = makeLineMap(line.start, 0, -1, length)
             mapOut(tail, vents |+| lineMap)
           }
           else if (line.start.y == line.end.y && line.start.x < line.end.x) {
-            val lineMap = makeLineMap(line.start, 1, 0, length.toInt)
+            val lineMap = makeLineMap(line.start, 1, 0, length)
             mapOut(tail, vents |+| lineMap)
           }
           else if (line.start.y == line.end.y && line.start.x > line.end.x) {
-            val lineMap = makeLineMap(line.start, -1, 0, length.toInt)
+            val lineMap = makeLineMap(line.start, -1, 0, length)
             mapOut(tail, vents |+| lineMap)
           }
           else if (line.start.x > line.end.x && line.start.y > line.end.y){
-            val lineMap = makeLineMap(line.start, -1, -1, length.toInt)
+            val lineMap = makeLineMap(line.start, -1, -1, length)
             mapOut(tail, vents |+| lineMap)
           }
           else if (line.start.x > line.end.x && line.start.y < line.end.y){
-            val lineMap = makeLineMap(line.start, -1, 1, length.toInt)
+            val lineMap = makeLineMap(line.start, -1, 1, length)
             mapOut(tail, vents |+| lineMap)
           }
           else if (line.start.x < line.end.x && line.start.y > line.end.y){
-            val lineMap = makeLineMap(line.start, 1, -1, length.toInt)
+            val lineMap = makeLineMap(line.start, 1, -1, length)
             mapOut(tail, vents |+| lineMap)
           }
           else {
-            val lineMap = makeLineMap(line.start, 1, 1, length.toInt)
+            val lineMap = makeLineMap(line.start, 1, 1, length)
             mapOut(tail, vents |+| lineMap)
           }
-//        else{
-//            mapOut(tail, vents)
-//          }
-
-
       }
     }
 
@@ -89,7 +78,6 @@ object Day5 extends App {
   def makeLineMap(start: Coord, xIncrement: Int, yIncrement: Int, length: Int): Map[(Int, Int), Int] = {
     Stream.iterate(((start.x, start.y), 1))(vent => nextVent(vent, xIncrement, yIncrement))
       .take(length)
-//            .takeWhile(vent => vent._1._1 <= end.x && vent._1._2 <= end.y)
       .toMap
   }
 

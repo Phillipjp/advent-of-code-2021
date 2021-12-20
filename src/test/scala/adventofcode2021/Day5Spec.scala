@@ -40,9 +40,6 @@ class Day5Spec extends AnyWordSpec with Matchers {
       val actual = Day5.mapVents(lines)
 
       // Then
-      actual.foreach(println)
-      println(actual)
-
       actual shouldBe expected
 
     }
@@ -56,9 +53,6 @@ class Day5Spec extends AnyWordSpec with Matchers {
       val actual = Day5.mapVents(lines)
 
       // Then
-      actual.foreach(println)
-      println(actual)
-
       actual shouldBe expected
 
     }
