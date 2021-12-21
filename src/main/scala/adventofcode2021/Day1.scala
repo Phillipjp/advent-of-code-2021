@@ -12,7 +12,7 @@ object Day1 extends App{
   }
 
 
-  val depths = Utils.readFileAsListOfInt("day-1-part-1.txt")
+  val depths = Utils.readFileAsListOfInt("day-1.txt")
   val partOneIncreases = partOne(depths)
   println(s"Part One Increases: $partOneIncreases")
 

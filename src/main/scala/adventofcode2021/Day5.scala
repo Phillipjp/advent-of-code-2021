@@ -85,7 +85,7 @@ object Day5 extends App {
     ((vent._1._1 + xIncrement, vent._1._2 + yIncrement), 1)
   }
 
-  val input = Utils.readFileAsListOfString("day-5-part-1.txt")
+  val input = Utils.readFileAsListOfString("day-5.txt")
   val lines = parseInput(input)
   val ventMap = mapVents(lines)
   val partOneAnswer = ventMap.values.count(_ > 1)

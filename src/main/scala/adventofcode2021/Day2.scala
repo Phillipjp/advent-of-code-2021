@@ -27,7 +27,7 @@ object Day2 extends App {
       case ("down", y) => (z._1, z._2, z._3 + y)
     }
 
-  val instructions = parseInstructions(Utils.readFileAsListOfString("day-2-part-1.txt"))
+  val instructions = parseInstructions(Utils.readFileAsListOfString("day-2.txt"))
   val partOneAnswer = followInstructions(instructions, (0,0), completePartOneInstruction)
   println(s"Part One: $partOneAnswer => ${partOneAnswer._1 * partOneAnswer._2}")
 

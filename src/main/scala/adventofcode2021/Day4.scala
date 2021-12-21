@@ -93,7 +93,7 @@ object Day4 extends App {
     board.values.filter(!_.marked).map(_.value).sum * finalNumber
   }
 
-  val input = Utils.readFileAsListOfString("day-4-part-1.txt")
+  val input = Utils.readFileAsListOfString("day-4.txt")
   val numbers = input.head.split(",").map(_.toInt).toList
   val rawCards = input.drop(2)
 

@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 
 object Day6 extends App{
 
-  val input = Utils.readFileAsListOfString("day-6-part-1.txt").head.split(",").toList.map(_.toInt)
+  val input = Utils.readFileAsListOfString("day-6.txt").head.split(",").toList.map(_.toInt)
   val partOneAnswer = simulateFishBreedingV2(input, 80).values.sum
   println(partOneAnswer)
   val partTwoAnswer = simulateFishBreedingV2(input, 256).values.sum

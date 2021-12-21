@@ -57,7 +57,7 @@ object Day3 extends App{
     oxygenInt * co2Int
   }
 
-  val binary = Utils.readFileAsListOfString("day-3-part-1.txt")
+  val binary = Utils.readFileAsListOfString("day-3.txt")
   val powerConsumption = calculatePowerConsumption(binary)
   println(s"Power Consumption: $powerConsumption")
   val lifeSupportRating = calculateLifeSupportRating(binary)
