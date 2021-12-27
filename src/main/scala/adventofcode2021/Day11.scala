@@ -6,8 +6,10 @@ object Day11 extends App{
 
   val input = Utils.readFileAsListOfString("day-11.txt")
   val octopusEnergyMap = makeOctopusEnergyMap(input)
-  val answer = numberOfFlashesAfterNSteps(octopusEnergyMap, 100)
-  println(answer)
+  val answer1 = numberOfFlashesAfterNSteps(octopusEnergyMap, 100)
+  println(answer1)
+  val answer2 = findWhenOctopusesFlashesSync(octopusEnergyMap)
+  println(answer2)
 
 
   def numberOfFlashesAfterNSteps(octopusEnergyMap: Map[(Int, Int), Int], n: Int): Int = {
@@ -31,6 +33,25 @@ object Day11 extends App{
     }
 
     turn(octopusEnergyMap, n, 0, 0)
+  }
+
+  def findWhenOctopusesFlashesSync(octopusEnergyMap: Map[(Int, Int), Int]): Int = {
+    @tailrec
+    def turn(octopusEnergyMap: Map[(Int, Int), Int], i: Int): Int = {
+      if(octopusEnergyMap.values.forall(_ == 0))
+        i
+      else{
+        val updatedOctopusEnergyMap = increaseAllOctopusEnergies(octopusEnergyMap)
+        val octopusesToFlash = getOctopusesToFlash(updatedOctopusEnergyMap).keySet.toList
+
+        val flashedOctopuses = flashOctopuses(octopusesToFlash, updatedOctopusEnergyMap)
+        val resetOctopusEnergyMap = resetOctopusEnergies(flashedOctopuses)
+
+        turn(resetOctopusEnergyMap,  i+1)
+      }
+    }
+
+    turn(octopusEnergyMap, 0)
   }
 
   @tailrec
